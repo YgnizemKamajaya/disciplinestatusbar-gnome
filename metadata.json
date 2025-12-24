@@ -1,7 +1,7 @@
 {
-    "uuid": "murimdisciple@kamajaya",
-    "name": "MurimDiscipleBot",
-    "description": "Displays Murim-style self-care messages in the panel",
+    "uuid": "disciplinestatusbar@kamajaya",
+    "name": "Discipline Status Bar",
+    "description": "Displays Murim-style discipline reminder messages in the panel | Menampilkan pesan pengingat disiplin ala Murim di panel",
     "shell-version": [
         "42",
         "43",
@@ -12,8 +12,8 @@
         "48",
         "49"
     ],
-    "version": 1,
-    "url": "https://github.com/YgnizemKamajaya/MurimDiscipleBot",
+    "version": 2,
+    "url": "https://github.com/YgnizemKamajaya/disciplinestatusbar-gnome",
     "author": "YgnizemKamajaya",
-    "settings-schema": "org.gnome.shell.extensions.murimdisciple"
+    "settings-schema": "org.gnome.shell.extensions.disciplinestatusbar"
 }

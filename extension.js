@@ -1,6 +1,6 @@
 /**
- * MurimDiscipleBot - GNOME Shell Extension
- * Displays Murim-style self-care messages in the top panel
+ * Discipline Status Bar - GNOME Shell Extension
+ * Displays Murim-style discipline reminder messages in the top panel
  * Compatible with GNOME Shell 45+
  */
 
@@ -13,7 +13,7 @@ import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
-export default class MurimDiscipleBotExtension extends Extension {
+export default class DisciplineStatusBarExtension extends Extension {
     enable() {
         this._messages = [];
         this._lastIndex = -1;
@@ -37,7 +37,7 @@ export default class MurimDiscipleBotExtension extends Extension {
         const position = this._settings.get_string('panel-position');
         Main.panel.addToStatusArea(this.uuid, this._indicator, 1, position);
 
-        // Load messages from JSON file
+        // Load messages based on language setting
         this._loadMessages();
 
         // Display first message
@@ -58,6 +58,9 @@ export default class MurimDiscipleBotExtension extends Extension {
                 this._updatePosition();
             } else if (key === 'message-interval') {
                 this._setupTimer();
+            } else if (key === 'language') {
+                this._loadMessages();
+                this._setRandomMessage();
             }
         });
     }
@@ -97,8 +100,11 @@ export default class MurimDiscipleBotExtension extends Extension {
     }
 
     _loadMessages() {
+        const lang = this._settings.get_string('language');
+        const filename = lang === 'en' ? 'messages_en.json' : 'messages_id.json';
+
         try {
-            const file = Gio.File.new_for_path(`${this.path}/messages.json`);
+            const file = Gio.File.new_for_path(`${this.path}/${filename}`);
             const [ok, contents] = file.load_contents(null);
 
             if (ok) {
@@ -111,7 +117,7 @@ export default class MurimDiscipleBotExtension extends Extension {
                 }
             }
         } catch (error) {
-            console.error(`[MurimDiscipleBot] Error loading messages: ${error.message}`);
+            console.error(`[DisciplineStatusBar] Error loading messages: ${error.message}`);
             this._messages = ['Error memuat pesan!'];
         }
     }

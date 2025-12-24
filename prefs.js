@@ -1,5 +1,5 @@
 /**
- * MurimDiscipleBot - Preferences Window
+ * Discipline Status Bar - Preferences Window
  * GNOME Shell Extension Settings UI
  */
 
@@ -10,7 +10,7 @@ import GdkPixbuf from 'gi://GdkPixbuf';
 
 import { ExtensionPreferences, gettext as _ } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
-export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
+export default class DisciplineStatusBarPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
         const settings = this.getSettings();
 
@@ -45,7 +45,7 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
 
         // Main text (Indonesian)
         const mainLabel = new Gtk.Label({
-            label: 'Terima kasih sudah pakai <b>MurimDiscipleBot</b>!',
+            label: 'Terima kasih sudah pakai <b>Discipline Status Bar</b>!',
             use_markup: true,
             halign: Gtk.Align.START,
         });
@@ -53,7 +53,7 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
 
         // Subtitle (English, italic)
         const subtitleLabel = new Gtk.Label({
-            label: '<i>Thank you for using MurimDiscipleBot!</i>',
+            label: '<i>Thank you for using Discipline Status Bar!</i>',
             use_markup: true,
             halign: Gtk.Align.START,
             css_classes: ['dim-label'],
@@ -71,7 +71,7 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
 
         // QRIS info
         const qrisInfoLabel = new Gtk.Label({
-            label: '<small>Pertimbangkan support Developer dengan memberikan donasi!</small>',
+            label: '<small>Hanya bisa di-scan dengan QRIS. Pertimbangkan support Kreator dengan memberikan donasi!</small>',
             use_markup: true,
             halign: Gtk.Align.START,
             css_classes: ['dim-label'],
@@ -97,22 +97,52 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
             qrImage.set_size_request(120, 120);
             donationBox.append(qrImage);
         } catch (e) {
-            console.error(`[MurimDiscipleBot] Error loading QR: ${e.message}`);
+            console.error(`[DisciplineStatusBar] Error loading QR: ${e.message}`);
         }
 
         donationGroup.add(donationBox);
 
+        // ===== LANGUAGE GROUP =====
+        const languageGroup = new Adw.PreferencesGroup({
+            title: _('Bahasa / Language'),
+            description: _('Pilih bahasa pesan / Choose message language'),
+        });
+        page.add(languageGroup);
+
+        // Language Toggle
+        const languageRow = new Adw.ComboRow({
+            title: _('Bahasa Pesan'),
+            subtitle: _('Message Language'),
+        });
+
+        const languageModel = new Gtk.StringList();
+        languageModel.append('🇮🇩 Indonesia');
+        languageModel.append('🇬🇧 English');
+        languageRow.set_model(languageModel);
+
+        // Set current value
+        const languages = ['id', 'en'];
+        const currentLang = settings.get_string('language');
+        languageRow.set_selected(languages.indexOf(currentLang));
+
+        // Connect change handler
+        languageRow.connect('notify::selected', () => {
+            settings.set_string('language', languages[languageRow.get_selected()]);
+        });
+
+        languageGroup.add(languageRow);
+
         // ===== APPEARANCE GROUP =====
         const appearanceGroup = new Adw.PreferencesGroup({
-            title: _('Tampilan'),
-            description: _('Atur tampilan pesan di panel'),
+            title: _('Tampilan / Appearance'),
+            description: _('Atur tampilan pesan di panel / Customize message appearance'),
         });
         page.add(appearanceGroup);
 
         // Panel Position
         const positionRow = new Adw.ComboRow({
             title: _('Posisi Panel'),
-            subtitle: _('Lokasi pesan di panel atas'),
+            subtitle: _('Panel Position'),
         });
 
         const positionModel = new Gtk.StringList();
@@ -135,15 +165,15 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
 
         // ===== TIMING GROUP =====
         const timingGroup = new Adw.PreferencesGroup({
-            title: _('Waktu'),
-            description: _('Atur waktu dan animasi pesan'),
+            title: _('Waktu / Timing'),
+            description: _('Atur waktu dan animasi / Control timing and animation'),
         });
         page.add(timingGroup);
 
         // Message Interval
         const intervalRow = new Adw.SpinRow({
             title: _('Interval Pesan'),
-            subtitle: _('Detik antar pergantian pesan otomatis'),
+            subtitle: _('Message Interval (seconds)'),
             adjustment: new Gtk.Adjustment({
                 lower: 60,
                 upper: 3600,
@@ -165,7 +195,7 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
         // Typing Speed
         const speedRow = new Adw.SpinRow({
             title: _('Kecepatan Ketik'),
-            subtitle: _('Milidetik per karakter (semakin kecil = semakin cepat)'),
+            subtitle: _('Typing Speed (ms per character)'),
             adjustment: new Gtk.Adjustment({
                 lower: 20,
                 upper: 200,
@@ -186,13 +216,13 @@ export default class MurimDiscipleBotPreferences extends ExtensionPreferences {
 
         // ===== ABOUT GROUP =====
         const aboutGroup = new Adw.PreferencesGroup({
-            title: _('Tentang'),
+            title: _('Tentang / About'),
         });
         page.add(aboutGroup);
 
         const aboutRow = new Adw.ActionRow({
-            title: _('MurimDiscipleBot v1.0'),
-            subtitle: _('Pengingat disiplin ala Murim untuk cultivation!'),
+            title: _('Discipline Status Bar v1.0.1'),
+            subtitle: _('Pengingat disiplin ala Murim / Murim-style discipline reminders'),
         });
         aboutGroup.add(aboutRow);
     }

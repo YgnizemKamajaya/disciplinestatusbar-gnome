@@ -1,37 +1,40 @@
-# MurimDiscipleBot ⚔️
+# Discipline Status Bar ⚔️
 
 GNOME Shell extension yang menampilkan pesan pengingat disiplin ala **Murim Academy** di panel atas desktop.
 
 *A GNOME Shell extension that displays Murim-style discipline reminder messages in the top panel.*
 
-![GNOME Shell 48+](https://img.shields.io/badge/GNOME%20Shell-42--49-blue)
+![GNOME Shell 45+](https://img.shields.io/badge/GNOME%20Shell-45+-blue)
 ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
-## ✨ Fitur
+---
+
+## 🇮🇩 Bahasa Indonesia
+
+### ✨ Fitur
 
 - 🥋 Pesan pengingat gaya Murim (qi, cultivation, petarung, dll)
+- 🌐 Dukungan 2 bahasa (Indonesia & English)
 - ⌨️ Animasi mengetik yang smooth
 - ⚙️ Pengaturan posisi panel (kiri/tengah/kanan)
 - ⏱️ Interval pesan yang bisa diatur
 - 🎯 Klik untuk pesan baru
 
-## 📦 Instalasi
-
-### Manual Install
+### 📦 Instalasi
 
 1. Clone atau download repository ini:
    ```bash
-   git clone https://github.com/YgnizemKamajaya/MurimDiscipleBot.git
+   git clone https://github.com/YgnizemKamajaya/disciplinestatusbar-gnome.git
    ```
 
 2. Copy ke folder extensions GNOME:
    ```bash
-   cp -r MurimDiscipleBot ~/.local/share/gnome-shell/extensions/murimdisciple@kamajaya
+   cp -r disciplinestatusbar-gnome ~/.local/share/gnome-shell/extensions/disciplinestatusbar@kamajaya
    ```
 
 3. Compile schema:
    ```bash
-   glib-compile-schemas ~/.local/share/gnome-shell/extensions/murimdisciple@kamajaya/schemas/
+   glib-compile-schemas ~/.local/share/gnome-shell/extensions/disciplinestatusbar@kamajaya/schemas/
    ```
 
 4. Restart GNOME Shell:
@@ -40,46 +43,94 @@ GNOME Shell extension yang menampilkan pesan pengingat disiplin ala **Murim Acad
 
 5. Aktifkan extension:
    ```bash
-   gnome-extensions enable murimdisciple@kamajaya
+   gnome-extensions enable disciplinestatusbar@kamajaya
    ```
 
-   Atau gunakan aplikasi **Extensions** / **Extension Manager**.
+### ⚙️ Pengaturan
 
-## ⚙️ Pengaturan
-
-Buka pengaturan melalui:
-- Klik ikon ⚙️ di Extension Manager
-- Atau jalankan: `gnome-extensions prefs murimdisciple@kamajaya`
-
-### Opsi yang tersedia:
 | Pengaturan | Deskripsi | Default |
 |------------|-----------|---------|
+| Bahasa | Indonesia / English | Indonesia |
 | Posisi Panel | Kiri / Tengah / Kanan | Kanan |
 | Interval Pesan | Detik antar pergantian (60-3600) | 300 |
 | Kecepatan Ketik | Milidetik per karakter (20-200) | 60 |
 
+---
+
+## 🇬🇧 English
+
+### ✨ Features
+
+- 🥋 Murim-style reminder messages (qi, cultivation, warrior, etc.)
+- 🌐 Bilingual support (Indonesian & English)
+- ⌨️ Smooth typing animation
+- ⚙️ Panel position settings (left/center/right)
+- ⏱️ Configurable message interval
+- 🎯 Click for new message
+
+### 📦 Installation
+
+1. Clone or download this repository:
+   ```bash
+   git clone https://github.com/YgnizemKamajaya/disciplinestatusbar-gnome.git
+   ```
+
+2. Copy to GNOME extensions folder:
+   ```bash
+   cp -r disciplinestatusbar-gnome ~/.local/share/gnome-shell/extensions/disciplinestatusbar@kamajaya
+   ```
+
+3. Compile schema:
+   ```bash
+   glib-compile-schemas ~/.local/share/gnome-shell/extensions/disciplinestatusbar@kamajaya/schemas/
+   ```
+
+4. Restart GNOME Shell:
+   - **X11**: Press `Alt+F2`, type `r`, press Enter
+   - **Wayland**: Logout and login again
+
+5. Enable the extension:
+   ```bash
+   gnome-extensions enable disciplinestatusbar@kamajaya
+   ```
+
+### ⚙️ Settings
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| Language | Indonesian / English | Indonesian |
+| Panel Position | Left / Center / Right | Right |
+| Message Interval | Seconds between messages (60-3600) | 300 |
+| Typing Speed | Milliseconds per character (20-200) | 60 |
+
+---
+
 ## 📝 Changelog
+
+### v1.0.1
+- Renamed project to Discipline Status Bar
+- Added bilingual support (Indonesian & English)
+- Added language toggle in settings
+- Updated UI to bilingual labels
 
 ### v1.0.0 (Initial Release)
 - Initial version
-- Pesan pengingat gaya Murim dalam Bahasa Indonesia
-- Animasi mengetik
-- Pengaturan posisi, interval, dan kecepatan
-- Donation section dengan QRIS Dana
-
-## 🤝 Kontribusi
-
-Pull request dan issue sangat diterima!
-
-## 📄 Lisensi
-
-GPL-3.0 License - Lihat [LICENSE](LICENSE) untuk detail.
+- Murim-style discipline reminder messages
+- Typing animation
+- Position, interval, and speed settings
+- Donation section with QRIS Dana
 
 ## 💖 Support
 
 Jika extension ini bermanfaat, pertimbangkan untuk mendukung pengembangan!
+*If you find this extension useful, consider supporting the development!*
 
 Scan QRIS Dana di halaman pengaturan extension.
+*Scan the QRIS Dana in the extension settings page.*
+
+## 📄 License
+
+GPL-3.0 License
 
 ---
 

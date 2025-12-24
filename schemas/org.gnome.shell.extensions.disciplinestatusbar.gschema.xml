@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="org.gnome.shell.extensions.murimdisciple" path="/org/gnome/shell/extensions/murimdisciple/">
+  <schema id="org.gnome.shell.extensions.disciplinestatusbar" path="/org/gnome/shell/extensions/disciplinestatusbar/">
     
     <key name="panel-position" type="s">
       <default>'right'</default>
@@ -18,6 +18,12 @@
       <default>60</default>
       <summary>Typing Speed</summary>
       <description>Delay between each character in milliseconds</description>
+    </key>
+    
+    <key name="language" type="s">
+      <default>'id'</default>
+      <summary>Language</summary>
+      <description>Message language (id = Indonesian, en = English)</description>
     </key>
     
   </schema>
