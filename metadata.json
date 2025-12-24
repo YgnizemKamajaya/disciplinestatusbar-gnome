@@ -1,0 +1,19 @@
+{
+    "uuid": "murimdisciple@kamajaya",
+    "name": "MurimDiscipleBot",
+    "description": "Displays Murim-style self-care messages in the panel",
+    "shell-version": [
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49"
+    ],
+    "version": 1,
+    "url": "https://github.com/YgnizemKamajaya/MurimDiscipleBot",
+    "author": "YgnizemKamajaya",
+    "settings-schema": "org.gnome.shell.extensions.murimdisciple"
+}

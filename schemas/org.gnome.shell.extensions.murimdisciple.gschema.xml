@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.murimdisciple" path="/org/gnome/shell/extensions/murimdisciple/">
+    
+    <key name="panel-position" type="s">
+      <default>'right'</default>
+      <summary>Panel Position</summary>
+      <description>Position of the message in the top panel (left, center, right)</description>
+    </key>
+    
+    <key name="message-interval" type="i">
+      <default>300</default>
+      <summary>Message Interval</summary>
+      <description>Interval between messages in seconds (default: 300 = 5 minutes)</description>
+    </key>
+    
+    <key name="typing-speed" type="i">
+      <default>60</default>
+      <summary>Typing Speed</summary>
+      <description>Delay between each character in milliseconds</description>
+    </key>
+    
+  </schema>
+</schemalist>
